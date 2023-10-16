@@ -1,5 +1,3 @@
-// class 2: LogicKnowledge
-
 public class LogicKnowledge {
 
     // Question 3: greenTicket Method
@@ -15,29 +13,26 @@ public class LogicKnowledge {
 
     // Question 4: makeChocolate Method
     public static int makeChocolate(int small, int large, int goal) {
-        int maxLarge = goal / 5;
-        if (maxLarge <= large) {
-            goal -= maxLarge * 5;
-        } else {
-            goal -= large * 5;
+        int totalLarge = 5 * large;
+        if (totalLarge > goal) {
+            totalLarge = (goal / 5) * 5;
         }
 
-        if (goal <= small) {
-            return goal;
+        if (totalLarge + small >= goal) {
+            return goal - totalLarge;
         }
+
         return -1;
     }
 
     public static void main(String[] args) {
-        // test of greenTicket method
-        System.out.println(greenTicket(1, 2, 3));    // 0
-        System.out.println(greenTicket(2, 2, 2));    // 20
-        System.out.println(greenTicket(1, 1, 2));    // 10
+        System.out.println(greenTicket(1, 2, 3));
+        System.out.println(greenTicket(2, 2, 2));
+        System.out.println(greenTicket(1, 1, 2));
 
-        // test of makeChocolate method
-        System.out.println(makeChocolate(4, 1, 9));   // 4
-        System.out.println(makeChocolate(4, 1, 10));  // -1
-        System.out.println(makeChocolate(4, 1, 7));   // 2
-        System.out.println(makeChocolate(4, 2, 7));   // 2
+        System.out.println(makeChocolate(4, 1, 9));
+        System.out.println(makeChocolate(4, 1, 10));
+        System.out.println(makeChocolate(4, 1, 7));
+        System.out.println(makeChocolate(4, 2, 7));
     }
 }
